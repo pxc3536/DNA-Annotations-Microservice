@@ -1,0 +1,10 @@
+#! /bin/bash
+apt-get install -y awscli
+cd /home/ubuntu/
+aws s3 cp s3://mpcs-students/pchang3/gas_annotator.zip /home/ubuntu/
+unzip gas_annotator.zip
+chown -R ubuntu:ubuntu /home/ubuntu/ann
+cp -a /home/ubuntu/ann/. /home/ubuntu/
+rm -rf /home/ubuntu/ann
+chmod +x /home/ubuntu/run_ann.sh
+sudo -u ubuntu /home/ubuntu/run_ann.sh &
